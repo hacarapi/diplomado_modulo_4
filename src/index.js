@@ -7,6 +7,9 @@ import 'dotenv/config';
 import logger from "./logs/logger.js";
 
 async function main(){
+    console.log(process.env.DB_NAME,
+        process.env.DB_USER,
+        process.env.DB_PASSWORD)
     //const port = app.get('port');
     //await sequelize.sync();
     await sequelize.sync({force: true});
