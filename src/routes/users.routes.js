@@ -14,4 +14,7 @@ router.route('/:id')
     .patch(authenticateToken, userControllers.activateInactivate)
     .delete(authenticateToken, userControllers.deleteUser);
 
+router.route('/:id/tasks')
+    .get(authenticateToken, userControllers.getTasks);
+
 export default router;

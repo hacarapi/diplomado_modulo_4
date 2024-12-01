@@ -11,7 +11,6 @@ export const Task = sequelize.define('tasks', {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
-
         validate:{
             notNull:{
                 msg: 'Username cannot be null'

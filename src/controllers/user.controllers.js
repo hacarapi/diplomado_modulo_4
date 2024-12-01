@@ -121,6 +121,26 @@ async function deleteUser(req, res) {
     }
 };
 
+async function getTasks(req,res) {
+    const {id} = req.params;
+    try {
+        const user = await User.findOne({
+            attibutes: ['username'],
+            include:[{
+                model:Task,
+                attibutes: ['name', 'done'],
+                /*where: {
+                    done:true
+                },*/
+            }],
+            where: {id},
+        });
+        res.json(user);
+    } catch (error) {
+        logger.error('Error getTasks: '+ error);
+        res.status(500).json({message: 'Error retrieving tasks'});
+    }
+}
 export default {
     getUsers,
     getUser,
@@ -128,4 +148,5 @@ export default {
     updateUser,
     activateInactivate,
     deleteUser,
+    getTasks,
 }
